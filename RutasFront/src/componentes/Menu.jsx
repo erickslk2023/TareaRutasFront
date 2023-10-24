@@ -4,6 +4,7 @@ import { Navbar, Nav, Row } from 'react-bootstrap';
 export const Menu = () => {
     return (
         <>
+        <div className="container-fluid">
         <Row className="bg-body-tertiary">
         <Navbar bg="dark" expand="lg" variant="dark">
                 <Navbar.Brand as={Link} to="/inicio">Inicio</Navbar.Brand>
@@ -20,6 +21,8 @@ export const Menu = () => {
             </Navbar>
         </Row>
 
+        </div>
+      
        
 
             
