@@ -51,7 +51,7 @@ export const Producto = () => {
   <div className='row'>
  
   {datos.map((x) => (
-    <Card key={x.id} className='col-lg-4 col-md-6 col-sm-12'>
+    <Card key={x.id} className='col-lg-4 col-md-6 col-sm-12 p-3'>
       <Card.Img variant="top" src={`data:image/png;base64,${x.foto}`} />
       <Card.Body>
         <Card.Title>{x.equipo}</Card.Title>
