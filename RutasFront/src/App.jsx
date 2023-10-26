@@ -6,6 +6,7 @@ import { Inicio } from './componentes/Inicio'
 import { Routes, Route } from 'react-router-dom'
 import { Menu } from './componentes/Menu'
 import { Producto } from './componentes/Productos'
+import { Footer } from './componentes/Footer'
 
 function App() {
   
@@ -19,6 +20,8 @@ function App() {
           <Route path='/contacto' element={ <Contacto />}  ></Route>
           <Route path='*' element={ <Default />}  ></Route>
         </Routes>
+
+        <Footer></Footer>
       
     </>
   )

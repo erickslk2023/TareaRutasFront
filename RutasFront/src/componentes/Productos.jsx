@@ -38,7 +38,7 @@ export const Producto = () => {
 
    <div className='container m-5'>
     <div className='row text-align-center'>
-    <h1>Productos</h1>
+    <h1 className='text-center'>Productos</h1>
     </div>
    
     </div> 
@@ -47,7 +47,7 @@ export const Producto = () => {
 
 
 
-<div className="container">
+<div className="container mb-5">
   <div className='row'>
  
   {datos.map((x) => (
@@ -62,7 +62,6 @@ export const Producto = () => {
   ))}
 </div>
   </div>
-
  
 
 

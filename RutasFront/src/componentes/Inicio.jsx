@@ -1,14 +1,32 @@
 import React from 'react'
-
+import  { useState, useEffect } from "react";
 import Slider from "react-slick";
 
 
-
+const url = 'http://localhost:3000/api/estadios';
 
 export const Inicio = () => {
 
 
+  const [datos, setDatos] = useState([]);
 
+  
+  const getProducto = async () => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Error al obtener datos del servidor");
+      }
+      const data = await response.json();
+      setDatos(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getProducto();
+  }, []);
   
   return (
     <>
@@ -41,49 +59,30 @@ export const Inicio = () => {
 </div>
 
 <div className='container text-center p-5'>
-  <h1>Agregar</h1>
+  <h1>Estadios</h1>
 </div>
 
-<div className='container'>
+<div className='container mb-5'>
 <div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
+ {datos.map((x)=>(
+ <div class="col">
+ <div class="card" key={x.id}>
+   <img src={`data:image/png;base64,${x.foto}`} class="card-img-top" alt="..."/>
+   <div class="card-body">
+     <h5 class="card-title">Estadio {x.nombre}</h5>
+     <p class="card-text">Capaciada {x.aforo}</p>
+   </div>
+ </div>
+</div>
+ ))}
+ 
+
+
 </div>
 </div>
+
+
+
     </>
   )
 }
